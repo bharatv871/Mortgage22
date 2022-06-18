@@ -32,6 +32,7 @@ namespace MortgageCalculator
 
             //_driver = new ChromeDriver();
              _driver.Navigate().GoToUrl("https://www.anz.com.au/personal/home-loans/calculators-tools/much-borrow/");
+            new MortgageFormSection(_driver).NavigateToElement();
         }
 
         [When(@"I enter the following user details in the form")]

@@ -26,7 +26,6 @@ namespace MortgageCalculator
 
         public MortgageFormSection SelectApplicationType(string applicationType)
         {
-            NavigateToElement();
             if (string.Equals(applicationType, "joint", StringComparison.OrdinalIgnoreCase))
             { _driver.FindElement(By.Id("application_type_joint")).Click(); }
             else { _driver.FindElement(By.Id("application_type_single")).Click(); }
