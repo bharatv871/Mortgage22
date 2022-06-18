@@ -6,4 +6,6 @@
 *.trx/
 *.trx
 
+.suo
+
 TestResults/

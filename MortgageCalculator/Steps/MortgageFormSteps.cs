@@ -1,4 +1,7 @@
-﻿using MortgageCalculator.PageObjects;
+﻿using AventStack.ExtentReports;
+using AventStack.ExtentReports.Reporter;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MortgageCalculator.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -11,6 +14,22 @@ namespace MortgageCalculator
     public sealed class MortgageFormSteps
     {
         private IWebDriver _driver;
+        ExtentTest test = null;
+        public static ExtentReports extent;
+        public TestContext TestContext { get; set; }
+
+
+
+
+        [BeforeTestRun]
+        public static void ExtentStart()
+        {
+            extent = new ExtentReports();
+            var dateTime = DateTime.Now.ToString("dd MMMM yyyy HH mm ss").ToString();
+            var htmlreporter = new ExtentHtmlReporter(@"C:\Users\bhara\OneDrive\Documents\MortgageCal\Mortgage22\MortgageCalculator\Reports\" + dateTime + "\\");
+
+            extent.AttachReporter(htmlreporter);
+        }
 
         [BeforeScenario]
         public void StartWebDriver()
@@ -23,49 +42,58 @@ namespace MortgageCalculator
         [Given(@"I am on the mortgage form")]
         public void GivenIAmOnTheMortgageForm()
         {
+            var title = ScenarioContext.Current.ScenarioInfo.Title;
 
             _driver.Navigate().GoToUrl("https://www.anz.com.au/personal/home-loans/calculators-tools/much-borrow/");
             new MortgageFormSection(_driver).NavigateToElement();
+            //string testName = TestContext.TestName;
+            test = extent.CreateTest(DateTime.Today.ToString() + title);
+            test.Log(Status.Info, "Navigated to the mortgage form");
         }
 
         [When(@"I enter the following user details in the form")]
         public void WhenIEnterTheFollowingUserDetailsInTheForm(Table table)
         {
-            foreach (var row in table.CreateDynamicSet(false))
-            {
+            dynamic row = table.CreateDynamicInstance(false);
 
-                new PageObjects.UserDetailsSection(_driver).SelectApplicationType(Convert.ToString(row.ApplicationType));
-                new PageObjects.UserDetailsSection(_driver).SelectNumberOfDependants(Convert.ToInt32(row.NumberOfDependants));
-                new PageObjects.UserDetailsSection(_driver).SelectTypeOfProperty(Convert.ToString(row.TypeOfProperty));
-            }
+            new PageObjects.UserDetailsSection(_driver).SelectApplicationType(Convert.ToString(row.ApplicationType));
+            new PageObjects.UserDetailsSection(_driver).SelectNumberOfDependants(Convert.ToInt32(row.NumberOfDependants));
+            new PageObjects.UserDetailsSection(_driver).SelectTypeOfProperty(Convert.ToString(row.TypeOfProperty));
+
+            test.Log(Status.Info, "User Details in the form is filled");
         }
+
         [When(@"I enter the following earning details in the form")]
         public void WhenIEnterTheFollowingEarningDetailsInTheForm(Table table)
         {
-            foreach (var row in table.CreateDynamicSet(false))
-            {
-                new UserEarningsSection(_driver).EnterAnnualIncome(Convert.ToInt32(row.AnnualIncome));
-                new UserEarningsSection(_driver).EnterOtherIncome(Convert.ToInt32(row.OtherIncome));
-            }
+            dynamic row = table.CreateDynamicInstance(false);
+
+            new UserEarningsSection(_driver).EnterAnnualIncome(Convert.ToInt32(row.AnnualIncome));
+            new UserEarningsSection(_driver).EnterOtherIncome(Convert.ToInt32(row.OtherIncome));
+
+            test.Log(Status.Info, "Earning Details in the form is filled");
+
         }
 
         [When(@"I enter the following expense details in the form")]
         public void WhenIEnterTheFollowingExpenseDetailsInTheForm(Table table)
         {
-            foreach (var row in table.CreateDynamicSet(false))
-            {
-                new UserExpensesSection(_driver).EnterMonthlyLivingExpenses(Convert.ToInt32(row.MonthlyLivingExpenses));
+            dynamic row = table.CreateDynamicInstance(false);
+
+            new UserExpensesSection(_driver).EnterMonthlyLivingExpenses(Convert.ToInt32(row.MonthlyLivingExpenses));
                 new UserExpensesSection(_driver).EnterCurrentRepayments(Convert.ToInt32(row.CurrentRepayments));
                 new UserExpensesSection(_driver).EnterLoanRepayments(Convert.ToInt32(row.LoanRepayments));
                 new UserExpensesSection(_driver).EnterMonthylCommitments(Convert.ToInt32(row.MonthlyCommitments));
                 new UserExpensesSection(_driver).EnterCreditCardLimits(Convert.ToInt32(row.CreditCardLimits));
-            }
+
+            test.Log(Status.Info, "Expense Details in the form is filled");
         }
 
         [When(@"I click on the workout loan button")]
         public void WhenIClickOnTheWorkoutButton()
         {
             new MortgageFormSection(_driver).ClickOnWorkoutButton();
+            test.Log(Status.Info, "Loan Calculation Button Clicked");
         }
 
         [Then(@"the borrowing estimate should be \$(.*)")]
@@ -73,12 +101,14 @@ namespace MortgageCalculator
         {
             var estimate = new MortgageFormSection(_driver).GetBorrowingEstimate();
             estimate.Equals(p0);
+
         }
 
         [When(@"I click on the start over button")]
         public void WhenIClickOnTheStartOverButton()
         {
             new MortgageFormSection(_driver).ClickOnStartOverButton();
+            test.Log(Status.Info, "Start Over Button Clicked");
         }
 
         [Then(@"the form is cleared")]
@@ -106,9 +136,15 @@ namespace MortgageCalculator
         [AfterScenario]
         public void DisposeWebDriver()
         {
+
+
+            test.Log(Status.Pass, "Test Pass");
+
             _driver.Close();
             _driver.Quit();
             _driver.Dispose();
+
+            extent.Flush();
         }
 
     }
