@@ -2,10 +2,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -16,7 +12,7 @@ namespace MortgageCalculator
     {
         private IWebDriver _driver;
 
-   [BeforeScenario]
+        [BeforeScenario]
         public void StartWebDriver()
         {
             _driver = new ChromeDriver();
@@ -28,7 +24,7 @@ namespace MortgageCalculator
         public void GivenIAmOnTheMortgageForm()
         {
 
-             _driver.Navigate().GoToUrl("https://www.anz.com.au/personal/home-loans/calculators-tools/much-borrow/");
+            _driver.Navigate().GoToUrl("https://www.anz.com.au/personal/home-loans/calculators-tools/much-borrow/");
             new MortgageFormSection(_driver).NavigateToElement();
         }
 
@@ -36,7 +32,7 @@ namespace MortgageCalculator
         public void WhenIEnterTheFollowingUserDetailsInTheForm(Table table)
         {
             foreach (var row in table.CreateDynamicSet(false))
-                 {
+            {
 
                 new PageObjects.UserDetailsSection(_driver).SelectApplicationType(Convert.ToString(row.ApplicationType));
                 new PageObjects.UserDetailsSection(_driver).SelectNumberOfDependants(Convert.ToInt32(row.NumberOfDependants));
