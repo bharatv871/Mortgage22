@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using MortgageCalculator.PageObjects;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
@@ -26,11 +27,7 @@ namespace MortgageCalculator
         [Given(@"I am on the mortgage form")]
         public void GivenIAmOnTheMortgageForm()
         {
-            //new MortgageForm().NavigateToMortgageForm();
-            // new MortgageFormSection(_driver).NavigateToMortgageForm();
-            //_driver = new ChromeDriver();
 
-            //_driver = new ChromeDriver();
              _driver.Navigate().GoToUrl("https://www.anz.com.au/personal/home-loans/calculators-tools/much-borrow/");
             new MortgageFormSection(_driver).NavigateToElement();
         }
@@ -41,9 +38,9 @@ namespace MortgageCalculator
             foreach (var row in table.CreateDynamicSet(false))
                  {
 
-                new MortgageFormSection(_driver).SelectApplicationType(Convert.ToString(row.ApplicationType));
-                new MortgageFormSection(_driver).SelectNumberOfDependants(Convert.ToInt32(row.NumberOfDependants));
-                new MortgageFormSection(_driver).SelectTypeOfProperty(Convert.ToString(row.TypeOfProperty));
+                new PageObjects.UserDetailsSection(_driver).SelectApplicationType(Convert.ToString(row.ApplicationType));
+                new PageObjects.UserDetailsSection(_driver).SelectNumberOfDependants(Convert.ToInt32(row.NumberOfDependants));
+                new PageObjects.UserDetailsSection(_driver).SelectTypeOfProperty(Convert.ToString(row.TypeOfProperty));
             }
         }
         [When(@"I enter the following earning details in the form")]
@@ -51,8 +48,8 @@ namespace MortgageCalculator
         {
             foreach (var row in table.CreateDynamicSet(false))
             {
-                new MortgageFormSection(_driver).EnterAnnualIncome(Convert.ToInt32(row.AnnualIncome));
-                new MortgageFormSection(_driver).EnterOtherIncome(Convert.ToInt32(row.OtherIncome));
+                new UserEarningsSection(_driver).EnterAnnualIncome(Convert.ToInt32(row.AnnualIncome));
+                new UserEarningsSection(_driver).EnterOtherIncome(Convert.ToInt32(row.OtherIncome));
             }
         }
 
@@ -61,11 +58,11 @@ namespace MortgageCalculator
         {
             foreach (var row in table.CreateDynamicSet(false))
             {
-                new MortgageFormSection(_driver).EnterMonthlyLivingExpenses(Convert.ToInt32(row.MonthlyLivingExpenses));
-                new MortgageFormSection(_driver).EnterCurrentRepayments(Convert.ToInt32(row.CurrentRepayments));
-                new MortgageFormSection(_driver).EnterLoanRepayments(Convert.ToInt32(row.LoanRepayments));
-                new MortgageFormSection(_driver).EnterMonthylCommitments(Convert.ToInt32(row.MonthlyCommitments));
-                new MortgageFormSection(_driver).EnterCreditCardLimits(Convert.ToInt32(row.CreditCardLimits));
+                new UserExpensesSection(_driver).EnterMonthlyLivingExpenses(Convert.ToInt32(row.MonthlyLivingExpenses));
+                new UserExpensesSection(_driver).EnterCurrentRepayments(Convert.ToInt32(row.CurrentRepayments));
+                new UserExpensesSection(_driver).EnterLoanRepayments(Convert.ToInt32(row.LoanRepayments));
+                new UserExpensesSection(_driver).EnterMonthylCommitments(Convert.ToInt32(row.MonthlyCommitments));
+                new UserExpensesSection(_driver).EnterCreditCardLimits(Convert.ToInt32(row.CreditCardLimits));
             }
         }
 
@@ -91,20 +88,20 @@ namespace MortgageCalculator
         [Then(@"the form is cleared")]
         public void ThenTheFormIsCleared()
         {
-            new MortgageFormSection(_driver).SingleApplicationTypeIsSelected();
-            new MortgageFormSection(_driver).GetNumberOfDependants().Equals(0);
-            new MortgageFormSection(_driver).PropertyTypeHomeIsSelected();
+            new UserDetailsSection(_driver).SingleApplicationTypeIsSelected();
+            new UserDetailsSection(_driver).GetNumberOfDependants().Equals(0);
+            new UserDetailsSection(_driver).PropertyTypeHomeIsSelected();
 
-            new MortgageFormSection(_driver).GetAnnualIncome().Equals(0);
-            new MortgageFormSection(_driver).GetAnnualIncome().Equals(0);
+            new UserEarningsSection(_driver).GetAnnualIncome().Equals(0);
+            new UserEarningsSection(_driver).GetAnnualIncome().Equals(0);
 
-            new MortgageFormSection(_driver).GetAnnualIncome().Equals(0);
-            new MortgageFormSection(_driver).GetOtherIncome().Equals(0);
-            new MortgageFormSection(_driver).GetMonthlyLivingExpenses().Equals(0);
-            new MortgageFormSection(_driver).GetCurrentHomeLoanRepayment().Equals(0);
-            new MortgageFormSection(_driver).GetOtherHomeLoanRepayment().Equals(0);
-            new MortgageFormSection(_driver).GetMonthlyCommitments().Equals(0);
-            new MortgageFormSection(_driver).GetCreditCardLimits().Equals(0);
+            new UserEarningsSection(_driver).GetAnnualIncome().Equals(0);
+            new UserEarningsSection(_driver).GetOtherIncome().Equals(0);
+            new UserExpensesSection(_driver).GetMonthlyLivingExpenses().Equals(0);
+            new UserExpensesSection(_driver).GetCurrentHomeLoanRepayment().Equals(0);
+            new UserExpensesSection(_driver).GetOtherHomeLoanRepayment().Equals(0);
+            new UserExpensesSection(_driver).GetMonthlyCommitments().Equals(0);
+            new UserExpensesSection(_driver).GetCreditCardLimits().Equals(0);
             new MortgageFormSection(_driver).GetBorrowingEstimate().Equals(0);
         }
 
