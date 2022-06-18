@@ -126,13 +126,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MortgageFormSection.cs" />
-    <Compile Include="MortgageFormSteps.cs" />
+    <Compile Include="PageObjects\MortgageFormSection.cs" />
+    <Compile Include="Steps\MortgageFormSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="MortgageFormTests.feature" />
+    <None Include="Tests\MortgageFormTests.feature" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
