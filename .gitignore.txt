@@ -1,0 +1,9 @@
+# Untracked files:
+
+\MortgageCal\Mortgage22\MortgageCalculator\bin/
+\MortgageCal\Mortgage22\MortgageCalculator\bin\Debug/
+
+*.trx/
+*.trx
+
+\MortgageCalculator\bin\Debug\TestResults/

@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="96dc6e8c-c452-4bf5-bc44-4dbec978a726" name="bhara@MSI 2022-06-18 14:27:11" runUser="MSI\bhara" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2022-06-18T14:27:11.3601123+12:00" queuing="2022-06-18T14:27:11.3601123+12:00" start="2022-06-18T14:27:00.7821423+12:00" finish="2022-06-18T14:27:22.3771238+12:00" />
+  <TestSettings name="default" id="7c8d9704-082b-4966-b77b-fd5dbe3fb689">
+    <Deployment runDeploymentRoot="bhara_MSI_2022-06-18_14_27_11" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="024d8f9e-fa0f-49e8-91a0-c2b127f9bc0a" testId="d49b8b16-ceda-4ffc-83f1-a6e96a8e39a6" testName="ClearFormAfterLoanIsCalculated" computerName="MSI" duration="00:00:05.6404401" startTime="2022-06-18T14:27:11.3496253+12:00" endTime="2022-06-18T14:27:16.9924920+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="024d8f9e-fa0f-49e8-91a0-c2b127f9bc0a">
+      <Output>
+        <StdOut>Given I am on the mortgage form&#xD;
+-&gt; done: MortgageFormSteps.GivenIAmOnTheMortgageForm() (3.1s)&#xD;
+When I enter the following user details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Application type | Number of dependants | Type of property |&#xD;
+  | Single           | 0                    | Home             |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingUserDetailsInTheForm(&lt;table&gt;) (0.2s)&#xD;
+And I enter the following earning details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Annual income | Other income |&#xD;
+  | 80000         | 10000        |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingEarningDetailsInTheForm(&lt;table&gt;) (0.2s)&#xD;
+And I enter the following expense details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Monthly living expenses | Current repayments | Loan repayments | Monthly commitments | Credit card limits |&#xD;
+  | 500                     | 0                  | 100             | 0                   | 10000              |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingExpenseDetailsInTheForm(&lt;table&gt;) (0.3s)&#xD;
+And I click on the workout loan button&#xD;
+-&gt; done: MortgageFormSteps.WhenIClickOnTheWorkoutButton() (0.0s)&#xD;
+And I click on the start over button&#xD;
+-&gt; done: MortgageFormSteps.WhenIClickOnTheStartOverButton() (0.1s)&#xD;
+Then the form is cleared&#xD;
+-&gt; done: MortgageFormSteps.ThenTheFormIsCleared() (0.3s)&#xD;
+&#xD;
+
+
+TestContext Messages:
+Given I am on the mortgage form&#xD;
+-&gt; done: MortgageFormSteps.GivenIAmOnTheMortgageForm() (3.1s)&#xD;
+When I enter the following user details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Application type | Number of dependants | Type of property |&#xD;
+  | Single           | 0                    | Home             |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingUserDetailsInTheForm(&lt;table&gt;) (0.2s)&#xD;
+And I enter the following earning details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Annual income | Other income |&#xD;
+  | 80000         | 10000        |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingEarningDetailsInTheForm(&lt;table&gt;) (0.2s)&#xD;
+And I enter the following expense details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Monthly living expenses | Current repayments | Loan repayments | Monthly commitments | Credit card limits |&#xD;
+  | 500                     | 0                  | 100             | 0                   | 10000              |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingExpenseDetailsInTheForm(&lt;table&gt;) (0.3s)&#xD;
+And I click on the workout loan button&#xD;
+-&gt; done: MortgageFormSteps.WhenIClickOnTheWorkoutButton() (0.0s)&#xD;
+And I click on the start over button&#xD;
+-&gt; done: MortgageFormSteps.WhenIClickOnTheStartOverButton() (0.1s)&#xD;
+Then the form is cleared&#xD;
+-&gt; done: MortgageFormSteps.ThenTheFormIsCleared() (0.3s)</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="77155cf6-a30d-479e-b539-ff11d745277b" testId="26dfc9a0-707d-46c3-a91e-97ff0eeb9add" testName="CalculateMortgage" computerName="MSI" duration="00:00:09.8607403" startTime="2022-06-18T14:27:01.1929191+12:00" endTime="2022-06-18T14:27:11.3416213+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="77155cf6-a30d-479e-b539-ff11d745277b">
+      <Output>
+        <StdOut>-&gt; Loading plugin C:\Users\bhara\OneDrive\Documents\MortgageCal\Mortgage22\MortgageCalculator\bin\Debug\TechTalk.SpecFlow.MSTest.SpecFlowPlugin.dll&#xD;
+-&gt; Loading plugin C:\Users\bhara\OneDrive\Documents\MortgageCal\Mortgage22\MortgageCalculator\bin\Debug\MortgageCalculator.dll&#xD;
+-&gt; Using default config&#xD;
+Given I am on the mortgage form&#xD;
+-&gt; done: MortgageFormSteps.GivenIAmOnTheMortgageForm() (3.1s)&#xD;
+When I enter the following user details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Application type | Number of dependants | Type of property |&#xD;
+  | Single           | 0                    | Home             |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingUserDetailsInTheForm(&lt;table&gt;) (0.5s)&#xD;
+And I enter the following earning details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Annual income | Other income |&#xD;
+  | 80000         | 10000        |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingEarningDetailsInTheForm(&lt;table&gt;) (0.2s)&#xD;
+And I enter the following expense details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Monthly living expenses | Current repayments | Loan repayments | Monthly commitments | Credit card limits |&#xD;
+  | 500                     | 0                  | 100             | 0                   | 10000              |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingExpenseDetailsInTheForm(&lt;table&gt;) (0.3s)&#xD;
+And I click on the workout loan button&#xD;
+-&gt; done: MortgageFormSteps.WhenIClickOnTheWorkoutButton() (0.0s)&#xD;
+Then the borrowing estimate should be $501,000&#xD;
+-&gt; done: MortgageFormSteps.ThenTheBorrowingEstimateShouldBe(501000) (0.0s)&#xD;
+&#xD;
+
+
+TestContext Messages:
+Given I am on the mortgage form&#xD;
+-&gt; done: MortgageFormSteps.GivenIAmOnTheMortgageForm() (3.1s)&#xD;
+When I enter the following user details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Application type | Number of dependants | Type of property |&#xD;
+  | Single           | 0                    | Home             |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingUserDetailsInTheForm(&lt;table&gt;) (0.5s)&#xD;
+And I enter the following earning details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Annual income | Other income |&#xD;
+  | 80000         | 10000        |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingEarningDetailsInTheForm(&lt;table&gt;) (0.2s)&#xD;
+And I enter the following expense details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Monthly living expenses | Current repayments | Loan repayments | Monthly commitments | Credit card limits |&#xD;
+  | 500                     | 0                  | 100             | 0                   | 10000              |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingExpenseDetailsInTheForm(&lt;table&gt;) (0.3s)&#xD;
+And I click on the workout loan button&#xD;
+-&gt; done: MortgageFormSteps.WhenIClickOnTheWorkoutButton() (0.0s)&#xD;
+Then the borrowing estimate should be $501,000&#xD;
+-&gt; done: MortgageFormSteps.ThenTheBorrowingEstimateShouldBe(501000) (0.0s)</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8cd1e923-286e-49e3-bdfa-4fc711fdc199" testId="2ca1ef82-9424-4152-9da7-370eee2e7b56" testName="ClearFormBeforeLoanIsCalculated" computerName="MSI" duration="00:00:05.2524686" startTime="2022-06-18T14:27:16.9924920+12:00" endTime="2022-06-18T14:27:22.2482972+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8cd1e923-286e-49e3-bdfa-4fc711fdc199">
+      <Output>
+        <StdOut>Given I am on the mortgage form&#xD;
+-&gt; done: MortgageFormSteps.GivenIAmOnTheMortgageForm() (3.0s)&#xD;
+When I enter the following user details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Application type | Number of dependants | Type of property |&#xD;
+  | Single           | 0                    | Home             |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingUserDetailsInTheForm(&lt;table&gt;) (0.2s)&#xD;
+And I enter the following earning details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Annual income | Other income |&#xD;
+  | 80000         | 10000        |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingEarningDetailsInTheForm(&lt;table&gt;) (0.2s)&#xD;
+And I enter the following expense details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Monthly living expenses | Current repayments | Loan repayments | Monthly commitments | Credit card limits |&#xD;
+  | 500                     | 0                  | 100             | 0                   | 10000              |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingExpenseDetailsInTheForm(&lt;table&gt;) (0.3s)&#xD;
+And I click on the start over button&#xD;
+-&gt; done: MortgageFormSteps.WhenIClickOnTheStartOverButton() (0.1s)&#xD;
+Then the form is cleared&#xD;
+-&gt; done: MortgageFormSteps.ThenTheFormIsCleared() (0.2s)&#xD;
+&#xD;
+
+
+TestContext Messages:
+Given I am on the mortgage form&#xD;
+-&gt; done: MortgageFormSteps.GivenIAmOnTheMortgageForm() (3.0s)&#xD;
+When I enter the following user details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Application type | Number of dependants | Type of property |&#xD;
+  | Single           | 0                    | Home             |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingUserDetailsInTheForm(&lt;table&gt;) (0.2s)&#xD;
+And I enter the following earning details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Annual income | Other income |&#xD;
+  | 80000         | 10000        |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingEarningDetailsInTheForm(&lt;table&gt;) (0.2s)&#xD;
+And I enter the following expense details in the form&#xD;
+  --- table step argument ---&#xD;
+  | Monthly living expenses | Current repayments | Loan repayments | Monthly commitments | Credit card limits |&#xD;
+  | 500                     | 0                  | 100             | 0                   | 10000              |&#xD;
+-&gt; done: MortgageFormSteps.WhenIEnterTheFollowingExpenseDetailsInTheForm(&lt;table&gt;) (0.3s)&#xD;
+And I click on the start over button&#xD;
+-&gt; done: MortgageFormSteps.WhenIClickOnTheStartOverButton() (0.1s)&#xD;
+Then the form is cleared&#xD;
+-&gt; done: MortgageFormSteps.ThenTheFormIsCleared() (0.2s)</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CalculateMortgage" storage="c:\users\bhara\onedrive\documents\mortgagecal\mortgage22\mortgagecalculator\bin\debug\mortgagecalculator.dll" id="26dfc9a0-707d-46c3-a91e-97ff0eeb9add">
+      <Execution id="77155cf6-a30d-479e-b539-ff11d745277b" />
+      <TestMethod codeBase="C:\Users\bhara\OneDrive\Documents\MortgageCal\Mortgage22\MortgageCalculator\bin\Debug\MortgageCalculator.dll" adapterTypeName="executor://mstestadapter/v2" className="MortgageCalculator.MortgageFormTestsFeature" name="CalculateMortgage" />
+    </UnitTest>
+    <UnitTest name="ClearFormAfterLoanIsCalculated" storage="c:\users\bhara\onedrive\documents\mortgagecal\mortgage22\mortgagecalculator\bin\debug\mortgagecalculator.dll" id="d49b8b16-ceda-4ffc-83f1-a6e96a8e39a6">
+      <Execution id="024d8f9e-fa0f-49e8-91a0-c2b127f9bc0a" />
+      <TestMethod codeBase="C:\Users\bhara\OneDrive\Documents\MortgageCal\Mortgage22\MortgageCalculator\bin\Debug\MortgageCalculator.dll" adapterTypeName="executor://mstestadapter/v2" className="MortgageCalculator.MortgageFormTestsFeature" name="ClearFormAfterLoanIsCalculated" />
+    </UnitTest>
+    <UnitTest name="ClearFormBeforeLoanIsCalculated" storage="c:\users\bhara\onedrive\documents\mortgagecal\mortgage22\mortgagecalculator\bin\debug\mortgagecalculator.dll" id="2ca1ef82-9424-4152-9da7-370eee2e7b56">
+      <Execution id="8cd1e923-286e-49e3-bdfa-4fc711fdc199" />
+      <TestMethod codeBase="C:\Users\bhara\OneDrive\Documents\MortgageCal\Mortgage22\MortgageCalculator\bin\Debug\MortgageCalculator.dll" adapterTypeName="executor://mstestadapter/v2" className="MortgageCalculator.MortgageFormTestsFeature" name="ClearFormBeforeLoanIsCalculated" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="d49b8b16-ceda-4ffc-83f1-a6e96a8e39a6" executionId="024d8f9e-fa0f-49e8-91a0-c2b127f9bc0a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="26dfc9a0-707d-46c3-a91e-97ff0eeb9add" executionId="77155cf6-a30d-479e-b539-ff11d745277b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2ca1ef82-9424-4152-9da7-370eee2e7b56" executionId="8cd1e923-286e-49e3-bdfa-4fc711fdc199" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="3" executed="3" passed="3" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+</TestRun>
