@@ -6,4 +6,4 @@
 *.trx/
 *.trx
 
-\MortgageCalculator\bin\Debug\TestResults/
+TestResults/
