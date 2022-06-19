@@ -37,3 +37,5 @@ C:\...\Mortgage22\MortgageCalculator\bin\Debug\TestResults
 C:\...\Mortgage22\MortgageCalculator\Reports
 
 The results are not overwritten. They produce new results every time and are marked by time to be unique.
+
+Screen recordings can be found in the C:\...\Mortgage22\Screen Recordings folder .
