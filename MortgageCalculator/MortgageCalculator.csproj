@@ -466,6 +466,7 @@
     <Compile Include="PageObjects\UserDetailsSection.cs" />
     <Compile Include="PageObjects\UserEarningsSection.cs" />
     <Compile Include="PageObjects\UserExpensesSection.cs" />
+    <Compile Include="ScenarioHooks.cs" />
     <Compile Include="Steps\MortgageFormSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

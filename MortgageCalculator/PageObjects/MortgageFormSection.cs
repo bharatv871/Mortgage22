@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using AventStack.ExtentReports;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 
 namespace MortgageCalculator
@@ -9,12 +10,15 @@ namespace MortgageCalculator
         private readonly By _workoutLoanButton = By.Id("btnBorrowCalculater");
         private readonly By _startOverButton = By.XPath("//button[contains(.,'Start over')]");
         private readonly By _borrowingEstimate = By.Id("borrowResultTextAmount");
-
+        ExtentTest test = null;
+        public static ExtentReports extent;
 
         public MortgageFormSection(IWebDriver driver)
         {
             _driver = driver;
         }
+
+        
 
         public void NavigateToElement()
         {

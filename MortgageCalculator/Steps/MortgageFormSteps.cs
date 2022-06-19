@@ -1,9 +1,7 @@
 ﻿using AventStack.ExtentReports;
-using AventStack.ExtentReports.Reporter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MortgageCalculator.PageObjects;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using System;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
@@ -11,44 +9,21 @@ using TechTalk.SpecFlow.Assist;
 namespace MortgageCalculator
 {
     [Binding]
-    public sealed class MortgageFormSteps
+    public class MortgageFormSteps
     {
         private IWebDriver _driver;
-        ExtentTest test = null;
-        public static ExtentReports extent;
-        public TestContext TestContext { get; set; }
 
-
-
-
-        [BeforeTestRun]
-        public static void ExtentStart()
+        public MortgageFormSteps(IWebDriver driver) 
         {
-            extent = new ExtentReports();
-            var dateTime = DateTime.Now.ToString("dd MMMM yyyy HH mm ss").ToString();
-            var htmlreporter = new ExtentHtmlReporter(@"C:\Users\bhara\OneDrive\Documents\MortgageCal\Mortgage22\MortgageCalculator\Reports\" + dateTime + "\\");
-
-            extent.AttachReporter(htmlreporter);
+            _driver = driver;
         }
-
-        [BeforeScenario]
-        public void StartWebDriver()
-        {
-            _driver = new ChromeDriver();
-            _driver.Manage().Window.Maximize();
-        }
-
 
         [Given(@"I am on the mortgage form")]
         public void GivenIAmOnTheMortgageForm()
         {
-            var title = ScenarioContext.Current.ScenarioInfo.Title;
-
+  
             _driver.Navigate().GoToUrl("https://www.anz.com.au/personal/home-loans/calculators-tools/much-borrow/");
             new MortgageFormSection(_driver).NavigateToElement();
-            //string testName = TestContext.TestName;
-            test = extent.CreateTest(DateTime.Today.ToString() + title);
-            test.Log(Status.Info, "Navigated to the mortgage form");
         }
 
         [When(@"I enter the following user details in the form")]
@@ -56,11 +31,11 @@ namespace MortgageCalculator
         {
             dynamic row = table.CreateDynamicInstance(false);
 
-            new PageObjects.UserDetailsSection(_driver).SelectApplicationType(Convert.ToString(row.ApplicationType));
-            new PageObjects.UserDetailsSection(_driver).SelectNumberOfDependants(Convert.ToInt32(row.NumberOfDependants));
-            new PageObjects.UserDetailsSection(_driver).SelectTypeOfProperty(Convert.ToString(row.TypeOfProperty));
+            new UserDetailsSection(_driver).SelectApplicationType(Convert.ToString(row.ApplicationType));
+            new UserDetailsSection(_driver).SelectNumberOfDependants(Convert.ToInt32(row.NumberOfDependants));
+            new UserDetailsSection(_driver).SelectTypeOfProperty(Convert.ToString(row.TypeOfProperty));
 
-            test.Log(Status.Info, "User Details in the form is filled");
+            Console.WriteLine("User Details in the form is filled");
         }
 
         [When(@"I enter the following earning details in the form")]
@@ -71,7 +46,7 @@ namespace MortgageCalculator
             new UserEarningsSection(_driver).EnterAnnualIncome(Convert.ToInt32(row.AnnualIncome));
             new UserEarningsSection(_driver).EnterOtherIncome(Convert.ToInt32(row.OtherIncome));
 
-            test.Log(Status.Info, "Earning Details in the form is filled");
+            Console.WriteLine("Earning Details in the form is filled");
 
         }
 
@@ -86,14 +61,15 @@ namespace MortgageCalculator
                 new UserExpensesSection(_driver).EnterMonthylCommitments(Convert.ToInt32(row.MonthlyCommitments));
                 new UserExpensesSection(_driver).EnterCreditCardLimits(Convert.ToInt32(row.CreditCardLimits));
 
-            test.Log(Status.Info, "Expense Details in the form is filled");
+            Console.WriteLine("Expense Details in the form is filled");
         }
 
         [When(@"I click on the workout loan button")]
         public void WhenIClickOnTheWorkoutButton()
         {
             new MortgageFormSection(_driver).ClickOnWorkoutButton();
-            test.Log(Status.Info, "Loan Calculation Button Clicked");
+
+            Console.WriteLine("Loan Calculation Button Clicked");
         }
 
         [Then(@"the borrowing estimate should be \$(.*)")]
@@ -108,7 +84,8 @@ namespace MortgageCalculator
         public void WhenIClickOnTheStartOverButton()
         {
             new MortgageFormSection(_driver).ClickOnStartOverButton();
-            test.Log(Status.Info, "Start Over Button Clicked");
+
+            Console.WriteLine("Start Over Button Clicked");
         }
 
         [Then(@"the form is cleared")]
@@ -133,19 +110,7 @@ namespace MortgageCalculator
 
 
 
-        [AfterScenario]
-        public void DisposeWebDriver()
-        {
-
-
-            test.Log(Status.Pass, "Test Pass");
-
-            _driver.Close();
-            _driver.Quit();
-            _driver.Dispose();
-
-            extent.Flush();
-        }
+       
 
     }
 }
